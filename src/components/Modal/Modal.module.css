@@ -1,0 +1,44 @@
+.backdrop {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  z-index: 20;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+  position: fixed;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  height: 10rem;
+  width: 50rem;
+  background: white;
+  border-radius: 8px;
+  z-index: 50;
+  animation: modal 0.5s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text {
+  animation: text 2s ease-in-out;
+}
+
+@keyframes modal {
+  from {
+    width: 0;
+  }
+  to {
+    width: 50rem;
+  }
+}
+@keyframes text {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
