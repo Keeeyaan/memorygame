@@ -27,7 +27,7 @@ const Modal = (props) => {
         document.getElementById("overlay")
       )}
       {ReactDOM.createPortal(
-        <ModalOverlay onClick={props.onClick} />,
+        <ModalOverlay onClick={props.onClick}>{props.children}</ModalOverlay>,
         document.getElementById("overlay")
       )}
     </React.Fragment>

@@ -3,6 +3,8 @@ import Modal from "../Modal/Modal";
 import SingleCard from "./SingleCard";
 import classes from "./Cards.module.css";
 
+let countMatched = 0;
+
 const Cards = ({ cardImages }) => {
   const [cards, setCards] = useState([]);
   const [turns, setTurns] = useState(0);
@@ -36,6 +38,11 @@ const Cards = ({ cardImages }) => {
           }
           return card;
         });
+        countMatched++;
+        if (countMatched === 8) {
+          setModal(true);
+          countMatched = 0;
+        }
         setCards(matchCards);
         resetChoices();
       } else {
@@ -62,7 +69,11 @@ const Cards = ({ cardImages }) => {
 
   return (
     <React.Fragment>
-      {modal && <Modal onClick={closeModalHandler} />}
+      {modal && (
+        <Modal onClick={closeModalHandler}>
+          <p>You did it in {turns} turns!</p>
+        </Modal>
+      )}
       <div className={classes.container}>
         <h1 className={classes.title}>Memory Game Friends Edition</h1>
         <button className={classes.btn} onClick={shuffleCards}>
